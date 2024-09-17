@@ -24,7 +24,7 @@
     left: 0;
     width: 100%;
     z-index: 99;
-    transition: height .3s ease, background-color .3s ease;
+    transition: height 0.3s ease, background-color 0.3s ease;
 
     &.shrink {
         height: $header-shrink-height;
@@ -32,7 +32,7 @@
     }
 
     &__wrap {
-        @include flex(center, space-betweeb);
+        @include flex(center, space-between);
         height: 100%;
         padding: 0 2rem;
 
@@ -53,23 +53,40 @@
             font-weight: 700;
             position: relative;
             font-size: 1.5rem;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                transition: width 0.5s ease;
+                height: 2px;
+                background-color: $main-color;
+            }
+
+            &.active::after,
+            &:hover::after {
+                width: 100%;
+            }
         }
 
-        &::after {
-            content: "";
-            position: absolute;
+        @include mobile {
+            position: fixed;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            transition: width 0.5 ease;
-            height: 2px;
-            background-color: $main-color;
-        }
-
-        &.active::after, 
-        &:hover::after {
+            left: 0;
+            height: 5rem;
             width: 100%;
+            background-color: $body-bg;
+            padding: 0 2rem;
+            box-shadow: $box-shadow;
+
+            @include flex(center, space-between);
+
+            & > * ~ * {
+                margin-left: 0;
+            }
         }
     }
 }
