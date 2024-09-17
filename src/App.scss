@@ -6,17 +6,18 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
     font-size: 100%;
 
     @include tablet {
-
+        font-size: 80%;
     }
 
     @include mobile {
-        font-size: 60%
+        font-size: 60%;
     }
 }
 
@@ -40,11 +41,11 @@ a {
 
 @media (hover: hover) {
     a:hover {
-        color: $main-color
+        color: $main-color;
     }
 }
 
-button, 
+button,
 input {
     outline: 0;
 }
@@ -81,5 +82,3 @@ iframe {
 .section__header {
     @include flex(center, space-between);
 }
-
-
