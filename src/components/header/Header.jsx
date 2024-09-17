@@ -26,7 +26,8 @@ const Header = () => {
     const { pathname } = useLocation();
     const headerRef = useRef(null);
 
-    const active = headerNav.findIndex(e => e.path === pathname);
+    // Verifica se o caminho ativo começa com o caminho definido em headerNav
+    const active = headerNav.findIndex(e => pathname.startsWith(e.path));
 
     useEffect(() => {
         const shrinkHeader = () => {
@@ -35,7 +36,7 @@ const Header = () => {
             } else {
                 headerRef.current.classList.remove('shrink');
             }
-        }
+        };
         window.addEventListener('scroll', shrinkHeader);
         return () => {
             window.removeEventListener('scroll', shrinkHeader);

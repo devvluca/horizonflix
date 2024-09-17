@@ -66,6 +66,7 @@
                 background-color: $main-color;
             }
 
+            // Quando o item está ativo ou é hover, a linha é mostrada
             &.active::after,
             &:hover::after {
                 width: 100%;
